@@ -3,7 +3,7 @@ import { getPostSlugs, getPostBySlug } from "@/lib/mdx";
 import RSS from "rss";
 
 export async function GET() {
-  const site_url = "blog.henry.games";
+  const site_url = "https://blog.henry.games";
   const feedOptions = {
     title: "Henry Games Blog | RSS Feed",
     description: "Welcome to the Henry Games Blog!",

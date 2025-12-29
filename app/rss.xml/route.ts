@@ -1,0 +1,30 @@
+// app/rss/route.ts
+import { getPostSlugs, getPostBySlug } from "@/lib/mdx";
+import RSS from "rss";
+
+export async function GET() {
+  const site_url = "blog.henry.games";
+  const feedOptions = {
+    title: "Henry Games Blog | RSS Feed",
+    description: "Welcome to the Henry Games Blog!",
+    site_url: site_url,
+    feed_url: `${site_url}/rss.xml`,
+    pubDate: new Date(),
+  };
+  const feed = new RSS(feedOptions);
+
+  getPostSlugs().forEach((slug) => {
+    const post = getPostBySlug(slug);
+
+    feed.item({
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      url: `${site_url}/posts/${post.slug}`,
+      date: new Date(post.frontmatter.date),
+    });
+  });
+
+  return new Response(feed.xml(), {
+    headers: { "Content-Type": "application/rss+xml" },
+  });
+}

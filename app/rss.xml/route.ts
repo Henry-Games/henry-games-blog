@@ -5,7 +5,7 @@ import RSS from "rss";
 export async function GET() {
   const site_url = "https://blog.henry.games";
   const feedOptions = {
-    title: "Henry Games Blog | RSS Feed",
+    title: "Henry Games Blog",
     description: "Welcome to the Henry Games Blog!",
     site_url: site_url,
     feed_url: `${site_url}/rss.xml`,

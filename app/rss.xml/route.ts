@@ -18,13 +18,15 @@ export async function GET() {
 
     feed.item({
       title: post.frontmatter.title,
+
       description: post.frontmatter.description,
       url: `${site_url}/posts/${post.slug}`,
       date: new Date(post.frontmatter.date),
+      author: post.frontmatter.author,
     });
   });
 
-  return new Response(feed.xml(), {
+  return new Response(feed.xml({ indent: true }), {
     headers: { "Content-Type": "application/rss+xml" },
   });
 }

@@ -50,7 +50,7 @@ export default async function PostPage({
 
             {/* Content */}
             <div className="px-8 py-10 bg-[#ca9cf4]">
-              <div className="prose prose-invert max-w-none">
+              <div className="prose prose-purple max-w-none">
                 <MDXRemote source={post.content} />
               </div>
             </div>
